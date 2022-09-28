@@ -1,35 +1,35 @@
 #!/bin/bash
 
-find_result=`find -name hmi_bash.sh`
+find_result=`find ~/ -maxdepth 1 -name hmi_bash.sh`
 if [[ -z $find_result ]]
 then
-	touch hmi_bash.sh
-	chmod 755 hmi_bash.sh
+    touch ~/hmi_bash.sh
 fi
 
-echo -e '#!/bin/sh\necho "hmi_bash.sh have just been executed"' > hmi_bash.sh
-chmod 755 hmi_bash.sh
+echo -e '#!/bin/sh\necho "hmi_bash.sh have just been executed"' > ~/hmi_bash.sh
+#make the hmi_bash.sh to be executable
+chmod 755 ~/hmi_bash.sh
 
-find_demo=`find -name Demo`
+find_demo=`find ~/ -maxdepth 1 -name Demo`
 if [[ -z $find_demo ]]
 then
-	mkdir Demo
+    mkdir ~/Demo
 fi
 
-find_hello=`find Demo/hello.txt`
+find_hello=`find ~/Demo -maxdepth 1 -name hello.txt`
 if [[ -z $find_demo ]]
 then
-	touch Demo/hello.txt
+    touch ~/Demo/hello.txt
 fi
 
-echo "Hello world" > Demo/hello.txt
+echo "Hello world" > ~/Demo/hello.txt
 if [[ $? == 0 ]]
 then 
-	echo "Written \" Hello world \" into Demo/hello.txt"
+    echo "Written \" Hello world \" into Demo/hello.txt"
 fi
 
-cp ./hmi_bash.sh ./Demo/
+cp ~/hmi_bash.sh ~/Demo/
 if [[ $? == 0 ]]
 then 
-	echo End
+    echo End
 fi
